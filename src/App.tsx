@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react';
+import EndPage from './Screens/EndPage';
+import Questions from './Screens/Questions';
+import StartPage from './Screens/StartPage';
+// import './App.css';
 
 function App() {
+
+  const [showPage, setshowPage] = useState<string>('Start')
+  const [choices, setchoices] = useState<string[]>([])
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="m-0 bg-slate-300 w-full flex flex-col items-center justify-center h-[100vh]">
+      {/* I WILL USE REACT ROUTER DOM LATER ON */}
+      { 
+        showPage === 'Start' && 
+        (<StartPage
+          setshowPage={setshowPage}
+        />)
+        
+      }
+
+      { 
+        showPage === 'Questions' && (<Questions setshowPage={setshowPage} choices={choices} setchoices={setchoices}/>)
+        
+      }
+
+      { 
+        showPage === 'End' && (<EndPage setshowPage={setshowPage} choices={choices}/>)
+        
+      }
+
+
+
+      
     </div>
   );
 }
