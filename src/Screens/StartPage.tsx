@@ -13,7 +13,7 @@ const StartPage = ({setshowPage}:Props) => {
             localStorage.setItem('name', nameRef.current.value)
             setshowPage('Questions')
         } else {
-            alert('Please enter your name')
+            alert('Please enter your name to begin')
         }
     }
 
